@@ -7,10 +7,21 @@
     <style>
         body {
             font-family: Arial, sans-serif;
-            margin: 20px;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f0f0;
         }
         h1 {
             text-align: center;
+        }
+        .container {
+            text-align: center;
+        }
+        .topic {
+            margin: 20px;
         }
         .topic h2 {
             font-size: 1.5em;
@@ -20,7 +31,7 @@
             border-radius: 5px;
         }
         .course {
-            margin-left: 20px;
+            margin: 20px 0;
         }
         .course button {
             padding: 5px 10px;
@@ -36,50 +47,34 @@
     </style>
 </head>
 <body>
-    <h1>Training Resources</h1>
+    <div class="container">
+        <h1>Training Resources</h1>
 
-    <div class="topic">
-        <h2>Marketing</h2>
-        <div class="course">
-            <h3>Course Name: Digital Marketing Basics</h3>
-            <p>Description: Learn the fundamentals of digital marketing, including SEO, social media, and email marketing.</p>
-            <button onclick="window.location.href='https://example.com/digital-marketing-basics'">Go to Resource</button>
+        <div class="topic">
+            <h2>Marketing</h2>
+            <div class="course">
+                <h3>Course Name: Digital Marketing Basics</h3>
+                <p>Description: Learn the fundamentals of digital marketing, including SEO, social media, and email marketing.</p>
+                <button onclick="window.location.href='https://example.com/digital-marketing-basics'">Go to Resource</button>
+            </div>
         </div>
-    </div>
 
-    <div class="topic">
-        <h2>Salesforce</h2>
-        <div class="course">
-            <h3>Course Name: Salesforce for Beginners</h3>
-            <p>Description: An introductory course to Salesforce, covering the basics of CRM and how to use Salesforce effectively.</p>
-            <button onclick="window.location.href='https://example.com/salesforce-for-beginners'">Go to Resource</button>
+        <div class="topic">
+            <h2>Salesforce</h2>
+            <div class="course">
+                <h3>Course Name: Salesforce for Beginners</h3>
+                <p>Description: An introductory course to Salesforce, covering the basics of CRM and how to use Salesforce effectively.</p>
+                <button onclick="window.location.href='https://example.com/salesforce-for-beginners'">Go to Resource</button>
+            </div>
         </div>
-    </div>
 
-    <div class="topic">
-        <h2>Project Management</h2>
-        <div class="course">
-            <h3>Course Name: Project Management Essentials</h3>
-            <p>Description: Understand the key principles of project management, including planning, execution, and monitoring.</p>
-            <button onclick="window.location.href='https://example.com/project-management-essentials'">Go to Resource</button>
-        </div>
-    </div>
-
-    <div class="topic">
-        <h2>Techy Stuff</h2>
-        <div class="course">
-            <h3>Course Name: Introduction to Python</h3>
-            <p>Description: A beginner's guide to programming in Python, covering basic syntax, data structures, and functions.</p>
-            <button onclick="window.location.href='https://example.com/introduction-to-python'">Go to Resource</button>
-        </div>
-    </div>
-
-    <div class="topic">
-        <h2>Other</h2>
-        <div class="course">
-            <h3>Course Name: Time Management Skills</h3>
-            <p>Description: Learn effective time management techniques to improve productivity and achieve your goals.</p>
-            <button onclick="window.location.href='https://example.com/time-management-skills'">Go to Resource</button>
+        <div class="topic">
+            <h2>Project Management</h2>
+            <div class="course">
+                <h3>Course Name: Project Management Essentials</h3>
+                <p>Description: Learn the key principles and practices of effective project management.</p>
+                <button onclick="window.location.href='https://example.com/project-management-essentials'">Go to Resource</button>
+            </div>
         </div>
     </div>
 </body>
