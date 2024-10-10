@@ -14,6 +14,9 @@
         h1 {
             text-align: center;
         }
+        p {
+            text-align: center;
+        }
         table {
             width: 100%;
             max-width: 800px;
@@ -56,6 +59,7 @@
 <body>
 
     <h1>Team Training Tracker</h1>
+    <p>Insert your training progress below, and it will remain saved even after refreshing the page. You can also edit the details if needed.</p>
     <a href="trailmixes.html" style="display: block; text-align: center; margin-top: 20px;">Go to Trailmixes Page</a>
 
     <table>
@@ -69,7 +73,6 @@
             </tr>
         </thead>
         <tbody id="trainingTable">
-            <!-- Repeat this block for each team member -->
             <tr data-index="1">
                 <td><input type="text" id="alias1" placeholder="Alias 1"></td>
                 <td><input type="text" id="course1" placeholder="Course Name"></td>
@@ -84,6 +87,7 @@
                 <td><button onclick="completeTask(this, 2)">Complete</button></td>
                 <td><img class="sticker" src="https://media.giphy.com/media/xT9IgG50Fb7Mi0prBC/giphy.gif" alt="sticker"></td>
             </tr>
+            <!-- Add more rows as needed -->
         </tbody>
     </table>
 
@@ -92,7 +96,7 @@
             // Load stored values
             loadSavedValues();
 
-            // Update input fields on change
+            // Save input values to localStorage when they change
             document.querySelectorAll('input[type="text"]').forEach(input => {
                 input.addEventListener('input', function() {
                     const id = this.id;
@@ -102,6 +106,7 @@
         });
 
         function loadSavedValues() {
+            // Load the saved input values from localStorage
             document.querySelectorAll('input[type="text"]').forEach(input => {
                 const id = input.id;
                 if (localStorage.getItem(id)) {
@@ -109,7 +114,7 @@
                 }
             });
 
-            // Load completion status and show stickers
+            // Load the saved completion status and show the stickers if marked complete
             document.querySelectorAll('tr').forEach(row => {
                 const index = row.getAttribute('data-index');
                 if (localStorage.getItem('completed' + index) === 'true') {
@@ -122,13 +127,13 @@
         }
 
         function completeTask(button, index) {
-            // Disable the button and show the sticker
+            // Mark the task as complete by disabling the button and showing the sticker
             button.disabled = true;
             let row = button.parentElement.parentElement;
             let sticker = row.querySelector('.sticker');
             sticker.style.display = 'block';
 
-            // Save completion status in localStorage
+            // Save the completion status to localStorage
             localStorage.setItem('completed' + index, 'true');
         }
     </script>
