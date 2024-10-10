@@ -92,42 +92,42 @@
     </table>
 
     <script>
+        // Load stored values from localStorage on page load
         document.addEventListener('DOMContentLoaded', function() {
-            // Load stored values on page load
             loadSavedValues();
 
-            // Save input values to localStorage on input change
+            // Save input values to localStorage on change
             document.querySelectorAll('input[type="text"]').forEach(input => {
                 input.addEventListener('input', function() {
                     const id = this.id;
-                    localStorage.setItem(id, this.value);
+                    localStorage.setItem(id, this.value);  // Store input value in localStorage
                 });
             });
         });
 
         function loadSavedValues() {
-            // Load the saved input values from localStorage
+            // Load the saved input values for all inputs
             document.querySelectorAll('input[type="text"]').forEach(input => {
                 const id = input.id;
-                const savedValue = localStorage.getItem(id);
-                if (savedValue) {
-                    input.value = savedValue; // Set the input value from localStorage
+                const savedValue = localStorage.getItem(id); // Get saved value from localStorage
+                if (savedValue !== null) {
+                    input.value = savedValue; // Set the input value to what was stored
                 }
             });
 
-            // Load the saved completion status and display stickers
+            // Load the saved completion status for each row
             document.querySelectorAll('tr').forEach(row => {
                 const index = row.getAttribute('data-index');
-                const isCompleted = localStorage.getItem('completed' + index) === 'true';
+                const isCompleted = localStorage.getItem('completed' + index) === 'true';  // Check if the task was marked as completed
                 const button = row.querySelector('button');
                 const sticker = row.querySelector('.sticker');
 
                 if (isCompleted) {
-                    button.textContent = 'Uncomplete';
-                    sticker.style.display = 'block';
+                    button.textContent = 'Uncomplete';  // Show "Uncomplete" if task is completed
+                    sticker.style.display = 'block';     // Display the sticker
                 } else {
-                    button.textContent = 'Complete';
-                    sticker.style.display = 'none';
+                    button.textContent = 'Complete';    // Show "Complete" if task is not completed
+                    sticker.style.display = 'none';     // Hide the sticker
                 }
             });
         }
@@ -137,15 +137,15 @@
             const sticker = row.querySelector('.sticker');
 
             if (button.textContent === 'Complete') {
-                // Mark task as complete
+                // Mark the task as complete
                 button.textContent = 'Uncomplete';
                 sticker.style.display = 'block';
-                localStorage.setItem('completed' + index, 'true');
+                localStorage.setItem('completed' + index, 'true');  // Save completed state in localStorage
             } else {
-                // Mark task as incomplete
+                // Mark the task as incomplete
                 button.textContent = 'Complete';
                 sticker.style.display = 'none';
-                localStorage.setItem('completed' + index, 'false');
+                localStorage.setItem('completed' + index, 'false');  // Save uncompleted state in localStorage
             }
         }
     </script>
