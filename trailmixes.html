@@ -3,101 +3,72 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Trailmixes</title>
+    <title>Training Resources</title>
     <style>
         body {
             font-family: Arial, sans-serif;
-            background-color: #f9f9f9;
-            margin: 0;
-            padding: 20px;
+            margin: 20px;
         }
         h1 {
             text-align: center;
         }
-        table {
-            width: 100%;
-            max-width: 800px;
-            margin: 20px auto;
-            border-collapse: collapse;
+        .topic {
+            margin-bottom: 20px;
         }
-        th, td {
-            border: 1px solid #ddd;
-            padding: 8px;
-            text-align: center;
+        .course {
+            margin-left: 20px;
         }
-        th {
-            background-color: #4CAF50;
-            color: white;
-        }
-        tr:nth-child(even) {
-            background-color: #f2f2f2;
-        }
-        input[type="text"] {
-            width: 90%;
-            padding: 5px;
-        }
-        button {
-            padding: 5px 10px;
-            border: none;
-            background-color: #4CAF50;
-            color: white;
-            cursor: pointer;
-        }
-        button:disabled {
-            background-color: #ccc;
-            cursor: not-allowed;
-        }
-        .sticker {
-            width: 50px;
-            display: none;
+        .course button {
+            margin-top: 5px;
         }
     </style>
 </head>
 <body>
+    <h1>Training Resources</h1>
 
-    <h1>Trailmixes</h1>
-<a href="index.html" style="display: block; text-align: center; margin-top: 20px;">Go to Team Training Tracker Page</a>
+    <div class="topic">
+        <h2>Marketing</h2>
+        <div class="course">
+            <h3>Course Name: Digital Marketing Basics</h3>
+            <p>Description: Learn the fundamentals of digital marketing, including SEO, social media, and email marketing.</p>
+            <button onclick="window.location.href='https://example.com/digital-marketing-basics'">Go to Resource</button>
+        </div>
+    </div>
 
+    <div class="topic">
+        <h2>Salesforce</h2>
+        <div class="course">
+            <h3>Course Name: Salesforce for Beginners</h3>
+            <p>Description: An introductory course to Salesforce, covering the basics of CRM and how to use Salesforce effectively.</p>
+            <button onclick="window.location.href='https://example.com/salesforce-for-beginners'">Go to Resource</button>
+        </div>
+    </div>
 
-    <table>
-        <thead>
-            <tr>
-                <th>Person Name</th>
-                <th>Course Name</th>
-                <th>Course Details</th>
-                <th>Certification Complete</th>
-                <th>Sticker</th>
-            </tr>
-        </thead>
-        <tbody>
-            <!-- Repeat this block for each team member -->
-            <tr>
-                <td><input type="text" value="Person 1"></td>
-                <td><input type="text" value="Course 1"></td>
-                <td><input type="text" value="Course Description"></td>
-                <td><button onclick="completeTask(this)">Certification Complete</button></td>
-                <td><img class="sticker" src="https://media.giphy.com/media/l0HlOvJ7yaacpuSas/giphy.gif" alt="sticker"></td>
-            </tr>
-            <tr>
-                <td><input type="text" value="Person 2"></td>
-                <td><input type="text" value="Course 2"></td>
-                <td><input type="text" value="Course Description"></td>
-                <td><button onclick="completeTask(this)">Certification Complete</button></td>
-                <td><img class="sticker" src="https://media.giphy.com/media/xT9IgG50Fb7Mi0prBC/giphy.gif" alt="sticker"></td>
-            </tr>
-            <!-- Add more rows for up to 15 people -->
-        </tbody>
-    </table>
+    <div class="topic">
+        <h2>Project Management</h2>
+        <div class="course">
+            <h3>Course Name: Project Management Essentials</h3>
+            <p>Description: Understand the key principles of project management, including planning, execution, and monitoring.</p>
+            <button onclick="window.location.href='https://example.com/project-management-essentials'">Go to Resource</button>
+        </div>
+    </div>
 
-    <script>
-        function completeTask(button) {
-            // Disable the button and show the sticker
-            button.disabled = true;
-            let row = button.parentElement.parentElement;
-            let sticker = row.querySelector('.sticker');
-            sticker.style.display = 'block';
-        }
-    </script>
+    <div class="topic">
+        <h2>Techy Stuff</h2>
+        <div class="course">
+            <h3>Course Name: Introduction to Python</h3>
+            <p>Description: A beginner's guide to programming in Python, covering basic syntax, data structures, and functions.</p>
+            <button onclick="window.location.href='https://example.com/introduction-to-python'">Go to Resource</button>
+        </div>
+    </div>
 
+    <div class="topic">
+        <h2>Other</h2>
+        <div class="course">
+            <h3>Course Name: Time Management Skills</h3>
+            <p>Description: Learn effective time management techniques to improve productivity and achieve your goals.</p>
+            <button onclick="window.location.href='https://example.com/time-management-skills'">Go to Resource</button>
+        </div>
+    </div>
 </body>
 </html>
