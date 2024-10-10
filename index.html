@@ -87,62 +87,6 @@
                 <td><button onclick="completeTask(this, 2)">Complete</button></td>
                 <td><img class="sticker" src="https://media.giphy.com/media/xT9IgG50Fb7Mi0prBC/giphy.gif" alt="sticker"></td>
             </tr>
-            <tr data-index="3">
-                <td><input type="text" id="alias3" placeholder="Alias 3"></td>
-                <td><input type="text" id="course3" placeholder="Course Name"></td>
-                <td><input type="text" id="details3" placeholder="Course Details"></td>
-                <td><button onclick="completeTask(this, 3)">Complete</button></td>
-                <td><img class="sticker" src="https://media.giphy.com/media/YTbZzCkRQCEJa/giphy.gif" alt="sticker"></td>
-            </tr>
-            <tr data-index="4">
-                <td><input type="text" id="alias4" placeholder="Alias 4"></td>
-                <td><input type="text" id="course4" placeholder="Course Name"></td>
-                <td><input type="text" id="details4" placeholder="Course Details"></td>
-                <td><button onclick="completeTask(this, 4)">Complete</button></td>
-                <td><img class="sticker" src="https://media.giphy.com/media/YTbZzCkRQCEJa/giphy.gif" alt="sticker"></td>
-            </tr>
-            <tr data-index="5">
-                <td><input type="text" id="alias5" placeholder="Alias 5"></td>
-                <td><input type="text" id="course5" placeholder="Course Name"></td>
-                <td><input type="text" id="details5" placeholder="Course Details"></td>
-                <td><button onclick="completeTask(this, 5)">Complete</button></td>
-                <td><img class="sticker" src="https://media.giphy.com/media/xT9IgG50Fb7Mi0prBC/giphy.gif" alt="sticker"></td>
-            </tr>
-            <tr data-index="6">
-                <td><input type="text" id="alias6" placeholder="Alias 6"></td>
-                <td><input type="text" id="course6" placeholder="Course Name"></td>
-                <td><input type="text" id="details6" placeholder="Course Details"></td>
-                <td><button onclick="completeTask(this, 6)">Complete</button></td>
-                <td><img class="sticker" src="https://media.giphy.com/media/YTbZzCkRQCEJa/giphy.gif" alt="sticker"></td>
-            </tr>
-            <tr data-index="7">
-                <td><input type="text" id="alias7" placeholder="Alias 7"></td>
-                <td><input type="text" id="course7" placeholder="Course Name"></td>
-                <td><input type="text" id="details7" placeholder="Course Details"></td>
-                <td><button onclick="completeTask(this, 7)">Complete</button></td>
-                <td><img class="sticker" src="https://media.giphy.com/media/xT9IgG50Fb7Mi0prBC/giphy.gif" alt="sticker"></td>
-            </tr>
-            <tr data-index="8">
-                <td><input type="text" id="alias8" placeholder="Alias 8"></td>
-                <td><input type="text" id="course8" placeholder="Course Name"></td>
-                <td><input type="text" id="details8" placeholder="Course Details"></td>
-                <td><button onclick="completeTask(this, 8)">Complete</button></td>
-                <td><img class="sticker" src="https://media.giphy.com/media/xT9IgG50Fb7Mi0prBC/giphy.gif" alt="sticker"></td>
-            </tr>
-            <tr data-index="9">
-                <td><input type="text" id="alias9" placeholder="Alias 9"></td>
-                <td><input type="text" id="course9" placeholder="Course Name"></td>
-                <td><input type="text" id="details9" placeholder="Course Details"></td>
-                <td><button onclick="completeTask(this, 9)">Complete</button></td>
-                <td><img class="sticker" src="https://media.giphy.com/media/xT9IgG50Fb7Mi0prBC/giphy.gif" alt="sticker"></td>
-            </tr>
-            <tr data-index="10">
-                <td><input type="text" id="alias10" placeholder="Alias 10"></td>
-                <td><input type="text" id="course10" placeholder="Course Name"></td>
-                <td><input type="text" id="details10" placeholder="Course Details"></td>
-                <td><button onclick="completeTask(this, 10)">Complete</button></td>
-                <td><img class="sticker" src="https://media.giphy.com/media/xT9IgG50Fb7Mi0prBC/giphy.gif" alt="sticker"></td>
-            </tr>
             <!-- Add more rows as needed -->
         </tbody>
     </table>
@@ -179,10 +123,8 @@
 
                 if (completed === 'true') {
                     button.disabled = true;
-                    button.innerText = 'Complete'; // Change button text to indicate completion
+                    button.innerText = 'Undo';
                     sticker.style.display = 'block'; // Show sticker
-                } else {
-                    button.innerText = 'Complete'; // Reset button text if not complete
                 }
             });
         }
@@ -200,7 +142,7 @@
             } else {
                 // Mark the task as complete
                 button.disabled = true;
-                button.innerText = 'Complete'; // Keep button text as 'Complete'
+                button.innerText = 'Undo'; // Change button text to 'Undo'
                 sticker.style.display = 'block'; // Show sticker
                 localStorage.setItem('completed' + index, 'true'); // Save status as complete
             }
