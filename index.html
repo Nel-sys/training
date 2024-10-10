@@ -148,10 +148,10 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            // Load stored values
+            // Load stored values on page load
             loadSavedValues();
 
-            // Save input values to localStorage when they change
+            // Save input values to localStorage on input change
             document.querySelectorAll('input[type="text"]').forEach(input => {
                 input.addEventListener('input', function() {
                     const id = this.id;
@@ -164,12 +164,13 @@
             // Load the saved input values from localStorage
             document.querySelectorAll('input[type="text"]').forEach(input => {
                 const id = input.id;
-                if (localStorage.getItem(id)) {
-                    input.value = localStorage.getItem(id);
+                const savedValue = localStorage.getItem(id); // Corrected: Use getItem to retrieve
+                if (savedValue) {
+                    input.value = savedValue; // Set the input value from localStorage
                 }
             });
 
-            // Load the saved completion status and show the stickers if marked complete
+            // Load the saved completion status and display stickers
             document.querySelectorAll('tr').forEach(row => {
                 const index = row.getAttribute('data-index');
                 const isCompleted = localStorage.getItem('completed' + index) === 'true';
@@ -187,8 +188,8 @@
         }
 
         function toggleComplete(button, index) {
-            let row = button.parentElement.parentElement;
-            let sticker = row.querySelector('.sticker');
+            const row = button.parentElement.parentElement;
+            const sticker = row.querySelector('.sticker');
 
             if (button.textContent === 'Complete') {
                 // Mark task as complete
@@ -196,7 +197,7 @@
                 sticker.style.display = 'block';
                 localStorage.setItem('completed' + index, 'true');
             } else {
-                // Mark task as uncomplete
+                // Mark task as incomplete
                 button.textContent = 'Complete';
                 sticker.style.display = 'none';
                 localStorage.setItem('completed' + index, 'false');
