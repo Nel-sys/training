@@ -85,7 +85,7 @@
                 <td><input type="text" id="course2" placeholder="Course Name"></td>
                 <td><input type="text" id="details2" placeholder="Course Details"></td>
                 <td><button onclick="toggleComplete(this, 2)">Complete</button></td>
-                <td><img class="sticker" src="https://media.giphy.com/media/YTbZzCkRQCEJa/giphy.gif" alt="sticker" alt="sticker"></td>
+                <td><img class="sticker" src="https://media.giphy.com/media/YTbZzCkRQCEJa/giphy.gif" alt="sticker"></td>
             </tr>
             <!-- Add more rows as needed -->
        </tbody>
@@ -109,7 +109,7 @@
             // Load the saved input values from localStorage
             document.querySelectorAll('input[type="text"]').forEach(input => {
                 const id = input.id;
-                const savedValue = localStorage.getItem(id); // Corrected: Use getItem to retrieve
+                const savedValue = localStorage.getItem(id);
                 if (savedValue) {
                     input.value = savedValue; // Set the input value from localStorage
                 }
