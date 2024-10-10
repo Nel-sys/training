@@ -101,6 +101,22 @@
                 input.addEventListener('input', function() {
                     const id = this.id;
                     localStorage.setItem(id, this.value);
+
+                    // Check if all inputs are cleared to re-enable the button and hide sticker
+                    const row = this.closest('tr');
+                    const alias = row.querySelector(`#alias${row.getAttribute('data-index')}`).value;
+                    const course = row.querySelector(`#course${row.getAttribute('data-index')}`).value;
+                    const details = row.querySelector(`#details${row.getAttribute('data-index')}`).value;
+                    const button = row.querySelector('button');
+                    const sticker = row.querySelector('.sticker');
+
+                    if (alias === '' || course === '' || details === '') {
+                        button.disabled = false;
+                        button.innerText = 'Complete'; // Reset button text
+                        button.style.backgroundColor = '#ff8000'; // Re-enable with orange color
+                        sticker.style.display = 'none'; // Hide sticker
+                        localStorage.setItem('completed' + row.getAttribute('data-index'), 'false');
+                    }
                 });
             });
         });
@@ -123,7 +139,7 @@
 
                 if (completed === 'true') {
                     button.disabled = true;
-                    button.innerText = 'Undo';
+                    button.innerText = 'Complete';
                     sticker.style.display = 'block'; // Show sticker
                 }
             });
@@ -133,16 +149,11 @@
             let row = button.parentElement.parentElement;
             let sticker = row.querySelector('.sticker');
 
-            if (button.disabled) {
-                // If already completed, revert back to original state
-                button.disabled = false;
-                button.innerText = 'Complete'; // Reset button text
-                sticker.style.display = 'none'; // Hide sticker
-                localStorage.setItem('completed' + index, 'false'); // Save status as incomplete
-            } else {
-                // Mark the task as complete
+            if (!button.disabled) {
+                // Mark the task as complete by greying out the button and showing the sticker
                 button.disabled = true;
-                button.innerText = 'Undo'; // Change button text to 'Undo'
+                button.innerText = 'Complete'; // Keep button text as 'Complete'
+                button.style.backgroundColor = '#ccc'; // Grey out the button
                 sticker.style.display = 'block'; // Show sticker
                 localStorage.setItem('completed' + index, 'true'); // Save status as complete
             }
