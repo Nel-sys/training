@@ -59,14 +59,14 @@
 <body>
 
     <h1>Team Training Tracker</h1>
-    <p>Insert your training progress below, and it will remain saved even after refreshing the page. You can also edit the details if needed.</p>
+    <p>Get yourself an Alias and record your development progress below. You can also edit the details if needed. On the next page you’ll find all the resources grouped by the topic of interest.</p>
     <a href="trailmixes.html" style="display: block; text-align: center; margin-top: 20px;">Go to Trailmixes Page</a>
 
     <table>
         <thead>
             <tr>
-                <th>Alias 1</th>
-                <th>Course Name</th>
+                <th>Alias</th>
+                <th>Certificate/Course Name</th>
                 <th>Course Details</th>
                 <th>Complete</th>
                 <th>Sticker</th>
@@ -80,7 +80,70 @@
                 <td><button onclick="completeTask(this, 1)">Complete</button></td>
                 <td><img class="sticker" src="https://media.giphy.com/media/26tn33aiTi1jkl6H6/giphy.gif" alt="sticker"></td>
             </tr>
-            <!-- Similar rows for other courses -->
+            <tr data-index="2">
+                <td><input type="text" id="alias2" placeholder="Alias 2"></td>
+                <td><input type="text" id="course2" placeholder="Course Name"></td>
+                <td><input type="text" id="details2" placeholder="Course Details"></td>
+                <td><button onclick="completeTask(this, 2)">Complete</button></td>
+                <td><img class="sticker" src="https://media.giphy.com/media/xT9IgG50Fb7Mi0prBC/giphy.gif" alt="sticker"></td>
+            </tr>
+<tr data-index="3">
+                <td><input type="text" id="alias3" placeholder="Alias 3"></td>
+                <td><input type="text" id="course3" placeholder="Course Name"></td>
+                <td><input type="text" id="details3" placeholder="Course Details"></td>
+                <td><button onclick="completeTask(this, 3)">Complete</button></td>
+                <td><img class="sticker" src="https://media.giphy.com/media/YTbZzCkRQCEJa/giphy.gif" alt="sticker"></td>
+            </tr>
+<tr data-index="4">
+                <td><input type="text" id="alias4" placeholder="Alias 4"></td>
+                <td><input type="text" id="course4" placeholder="Course Name"></td>
+                <td><input type="text" id="details4" placeholder="Course Details"></td>
+                <td><button onclick="completeTask(this, 4)">Complete</button></td>
+                <td><img class="sticker" src="https://media.giphy.com/media/YTbZzCkRQCEJa/giphy.gif" alt="sticker"></td>
+            </tr>
+<tr data-index="5">
+                <td><input type="text" id="alias5" placeholder="Alias 5"></td>
+                <td><input type="text" id="course5" placeholder="Course Name"></td>
+                <td><input type="text" id="details5" placeholder="Course Details"></td>
+                <td><button onclick="completeTask(this, 5)">Complete</button></td>
+                <td><img class="sticker" src="https://media.giphy.com/media/xT9IgG50Fb7Mi0prBC/giphy.gif" alt="sticker"></td>
+            </tr>
+<tr data-index="6">
+                <td><input type="text" id="alias6" placeholder="Alias 6"></td>
+                <td><input type="text" id="course6" placeholder="Course Name"></td>
+                <td><input type="text" id="details6" placeholder="Course Details"></td>
+                <td><button onclick="completeTask(this, 6)">Complete</button></td>
+                <td><img class="sticker" src="https://media.giphy.com/media/YTbZzCkRQCEJa/giphy.gif" alt="sticker"></td>
+            </tr>
+<tr data-index="7">
+                <td><input type="text" id="alias7" placeholder="Alias 7"></td>
+                <td><input type="text" id="course7" placeholder="Course Name"></td>
+                <td><input type="text" id="details7" placeholder="Course Details"></td>
+                <td><button onclick="completeTask(this, 7)">Complete</button></td>
+                <td><img class="sticker" src="https://media.giphy.com/media/xT9IgG50Fb7Mi0prBC/giphy.gif" alt="sticker"></td>
+            </tr>
+<tr data-index="8">
+                <td><input type="text" id="alias8" placeholder="Alias 8"></td>
+                <td><input type="text" id="course8" placeholder="Course Name"></td>
+                <td><input type="text" id="details8" placeholder="Course Details"></td>
+                <td><button onclick="completeTask(this, 8)">Complete</button></td>
+                <td><img class="sticker" src="https://media.giphy.com/media/xT9IgG50Fb7Mi0prBC/giphy.gif" alt="sticker"></td>
+            </tr>
+<tr data-index="9">
+                <td><input type="text" id="alias9" placeholder="Alias 9"></td>
+                <td><input type="text" id="course9" placeholder="Course Name"></td>
+                <td><input type="text" id="details9" placeholder="Course Details"></td>
+                <td><button onclick="completeTask(this, 9)">Complete</button></td>
+                <td><img class="sticker" src="https://media.giphy.com/media/xT9IgG50Fb7Mi0prBC/giphy.gif" alt="sticker"></td>
+            </tr>
+<tr data-index="10">
+                <td><input type="text" id="alias10" placeholder="Alias 10"></td>
+                <td><input type="text" id="course10" placeholder="Course Name"></td>
+                <td><input type="text" id="details10" placeholder="Course Details"></td>
+                <td><button onclick="completeTask(this, 10)">Complete</button></td>
+                <td><img class="sticker" src="https://media.giphy.com/media/xT9IgG50Fb7Mi0prBC/giphy.gif" alt="sticker"></td>
+            </tr>
+            <!-- Add more rows as needed -->
         </tbody>
     </table>
 
@@ -94,15 +157,6 @@
                 input.addEventListener('input', function() {
                     const id = this.id;
                     localStorage.setItem(id, this.value);
-
-                    // Check if any field is empty and re-enable the button
-                    const row = this.closest('tr');
-                    const button = row.querySelector('button');
-                    if (this.value.trim() === '') {
-                        button.disabled = false;
-                        localStorage.setItem('completed' + row.getAttribute('data-index'), 'false');
-                        row.querySelector('.sticker').style.display = 'none';
-                    }
                 });
             });
         });
@@ -119,15 +173,11 @@
             // Load the saved completion status and show the stickers if marked complete
             document.querySelectorAll('tr').forEach(row => {
                 const index = row.getAttribute('data-index');
-                const button = row.querySelector('button');
-                const sticker = row.querySelector('.sticker');
-                
                 if (localStorage.getItem('completed' + index) === 'true') {
+                    const button = row.querySelector('button');
                     button.disabled = true;
+                    const sticker = row.querySelector('.sticker');
                     sticker.style.display = 'block';
-                } else {
-                    button.disabled = false;
-                    sticker.style.display = 'none';
                 }
             });
         }
