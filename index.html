@@ -1,10 +1,9 @@
-Index.html
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Team Training Tracker</title>
+    <title>Training Hub</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -13,6 +12,9 @@ Index.html
             padding: 20px;
         }
         h1 {
+            text-align: center;
+        }
+        p {
             text-align: center;
         }
         table {
@@ -27,7 +29,7 @@ Index.html
             text-align: center;
         }
         th {
-            background-color: #4CAF50;
+            background-color: #ff8000;
             color: white;
         }
         tr:nth-child(even) {
@@ -40,7 +42,7 @@ Index.html
         button {
             padding: 5px 10px;
             border: none;
-            background-color: #4CAF50;
+            background-color: #ff8000;
             color: white;
             cursor: pointer;
         }
@@ -57,44 +59,148 @@ Index.html
 <body>
 
     <h1>Team Training Tracker</h1>
+    <p>Get yourself an Alias and insert your training progress below. You can also edit the details if needed.</p>
+    <a href="trailmixes.html" style="display: block; text-align: center; margin-top: 20px;">Go to Trailmixes Page</a>
 
     <table>
         <thead>
             <tr>
-                <th>Person Name</th>
+                <th>Alias</th>
                 <th>Course Name</th>
                 <th>Course Details</th>
                 <th>Complete</th>
                 <th>Sticker</th>
             </tr>
         </thead>
-        <tbody>
-            <!-- Repeat this block for each team member -->
-            <tr>
-                <td><input type="text" value="Person 1"></td>
-                <td><input type="text" value="Course 1"></td>
-                <td><input type="text" value="Course Description"></td>
-                <td><button onclick="completeTask(this)">Complete</button></td>
-                <td><img class="sticker" src="https://media.giphy.com/media/26tn33aiTi1jkl6H6/giphy.gif" alt="sticker"></td>
+        <tbody id="trainingTable">
+            <tr data-index="1">
+                <td><input type="text" id="alias1" placeholder="Alias 1"></td>
+                <td><input type="text" id="course1" placeholder="Course Name"></td>
+                <td><input type="text" id="details1" placeholder="Course Details"></td>
+                <td><button onclick="toggleComplete(this, 1)">Complete</button></td>
+                <td><img class="sticker" src="https://media.giphy.com/media/YTbZzCkRQCEJa/giphy.gif" alt="sticker"></td>
             </tr>
-            <tr>
-                <td><input type="text" value="Person 2"></td>
-                <td><input type="text" value="Course 2"></td>
-                <td><input type="text" value="Course Description"></td>
-                <td><button onclick="completeTask(this)">Complete</button></td>
-                <td><img class="sticker" src="https://media.giphy.com/media/xT9IgG50Fb7Mi0prBC/giphy.gif" alt="sticker"></td>
+            <tr data-index="2">
+                <td><input type="text" id="alias2" placeholder="Alias 2"></td>
+                <td><input type="text" id="course2" placeholder="Course Name"></td>
+                <td><input type="text" id="details2" placeholder="Course Details"></td>
+                <td><button onclick="toggleComplete(this, 2)">Complete</button></td>
+                <td><img class="sticker" src="https://media.giphy.com/media/YTbZzCkRQCEJa/giphy.gif" alt="sticker" alt="sticker"></td>
             </tr>
-            <!-- Add more rows for up to 15 people -->
-        </tbody>
+            <tr data-index="3">
+                <td><input type="text" id="alias3" placeholder="Alias 3"></td>
+                <td><input type="text" id="course3" placeholder="Course Name"></td>
+                <td><input type="text" id="details3" placeholder="Course Details"></td>
+                <td><button onclick="toggleComplete(this, 3)">Complete</button></td>
+                <td><img class="sticker" src="https://media.giphy.com/media/YTbZzCkRQCEJa/giphy.gif" alt="sticker"></td>
+            </tr>
+            <tr data-index="4">
+                <td><input type="text" id="alias4" placeholder="Alias 4"></td>
+                <td><input type="text" id="course4" placeholder="Course Name"></td>
+                <td><input type="text" id="details4" placeholder="Course Details"></td>
+                <td><button onclick="toggleComplete(this, 4)">Complete</button></td>
+                <td><img class="sticker" src="https://media.giphy.com/media/YTbZzCkRQCEJa/giphy.gif" alt="sticker"></td>
+            </tr>
+            <tr data-index="5">
+                <td><input type="text" id="alias5" placeholder="Alias 5"></td>
+                <td><input type="text" id="course5" placeholder="Course Name"></td>
+                <td><input type="text" id="details5" placeholder="Course Details"></td>
+                <td><button onclick="toggleComplete(this, 5)">Complete</button></td>
+                <td><img class="sticker" src="https://media.giphy.com/media/YTbZzCkRQCEJa/giphy.gif" alt="sticker"></td>
+            </tr>
+            <tr data-index="6">
+                <td><input type="text" id="alias6" placeholder="Alias 6"></td>
+                <td><input type="text" id="course6" placeholder="Course Name"></td>
+                <td><input type="text" id="details6" placeholder="Course Details"></td>
+                <td><button onclick="toggleComplete(this, 6)">Complete</button></td>
+                <td><img class="sticker" src="https://media.giphy.com/media/YTbZzCkRQCEJa/giphy.gif" alt="sticker"></td>
+            </tr>
+            <tr data-index="7">
+                <td><input type="text" id="alias7" placeholder="Alias 7"></td>
+                <td><input type="text" id="course7" placeholder="Course Name"></td>
+                <td><input type="text" id="details7" placeholder="Course Details"></td>
+                <td><button onclick="toggleComplete(this, 7)">Complete</button></td>
+                <td><img class="sticker" src="https://media.giphy.com/media/YTbZzCkRQCEJa/giphy.gif" alt="sticker"></td>
+            </tr>
+            <tr data-index="8">
+                <td><input type="text" id="alias8" placeholder="Alias 8"></td>
+                <td><input type="text" id="course8" placeholder="Course Name"></td>
+                <td><input type="text" id="details8" placeholder="Course Details"></td>
+                <td><button onclick="toggleComplete(this, 8)">Complete</button></td>
+                <td><img class="sticker" src="https://media.giphy.com/media/YTbZzCkRQCEJa/giphy.gif" alt="sticker"></td>
+            </tr>
+            <tr data-index="9">
+                <td><input type="text" id="alias9" placeholder="Alias 9"></td>
+                <td><input type="text" id="course9" placeholder="Course Name"></td>
+                <td><input type="text" id="details9" placeholder="Course Details"></td>
+                <td><button onclick="toggleComplete(this, 9)">Complete</button></td>
+                <td><img class="sticker" src="https://media.giphy.com/media/YTbZzCkRQCEJa/giphy.gif" alt="sticker"></td>
+            </tr>
+            <tr data-index="10">
+                <td><input type="text" id="alias10" placeholder="Alias 10"></td>
+                <td><input type="text" id="course10" placeholder="Course Name"></td>
+                <td><input type="text" id="details10" placeholder="Course Details"></td>
+                <td><button onclick="toggleComplete(this, 10)">Complete</button></td>
+                <td><img class="sticker" src="https://media.giphy.com/media/YTbZzCkRQCEJa/giphy.gif" alt="sticker"></td>
+            </tr>
+       </tbody>
     </table>
 
     <script>
-        function completeTask(button) {
-            // Disable the button and show the sticker
-            button.disabled = true;
+        document.addEventListener('DOMContentLoaded', function() {
+            // Load stored values
+            loadSavedValues();
+
+            // Save input values to localStorage when they change
+            document.querySelectorAll('input[type="text"]').forEach(input => {
+                input.addEventListener('input', function() {
+                    const id = this.id;
+                    localStorage.setItem(id, this.value);
+                });
+            });
+        });
+
+        function loadSavedValues() {
+            // Load the saved input values from localStorage
+            document.querySelectorAll('input[type="text"]').forEach(input => {
+                const id = input.id;
+                if (localStorage.getItem(id)) {
+                    input.value = localStorage.getItem(id);
+                }
+            });
+
+            // Load the saved completion status and show the stickers if marked complete
+            document.querySelectorAll('tr').forEach(row => {
+                const index = row.getAttribute('data-index');
+                const isCompleted = localStorage.getItem('completed' + index) === 'true';
+                const button = row.querySelector('button');
+                const sticker = row.querySelector('.sticker');
+
+                if (isCompleted) {
+                    button.textContent = 'Uncomplete';
+                    sticker.style.display = 'block';
+                } else {
+                    button.textContent = 'Complete';
+                    sticker.style.display = 'none';
+                }
+            });
+        }
+
+        function toggleComplete(button, index) {
             let row = button.parentElement.parentElement;
             let sticker = row.querySelector('.sticker');
-            sticker.style.display = 'block';
+
+            if (button.textContent === 'Complete') {
+                // Mark task as complete
+                button.textContent = 'Uncomplete';
+                sticker.style.display = 'block';
+                localStorage.setItem('completed' + index, 'true');
+            } else {
+                // Mark task as uncomplete
+                button.textContent = 'Complete';
+                sticker.style.display = 'none';
+                localStorage.setItem('completed' + index, 'false');
+            }
         }
     </script>
 
