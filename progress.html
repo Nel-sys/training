@@ -3,233 +3,251 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Training Hub</title>
+    <title>Our Progress</title>
     <style>
         body {
             font-family: Arial, sans-serif;
             background-color: #f9f9f9;
             margin: 0;
-            padding: 20px;
+            padding: 0;
         }
+
         h1 {
             text-align: center;
+            color: #173fc2;
+            margin-top: 20px;
         }
-        p {
-            text-align: center;
-        }
-        table {
+
+        /* Carousel container */
+        .carousel-container {
             width: 100%;
-            max-width: 800px;
-            margin: 20px auto;
-            border-collapse: collapse;
+            max-width: 1000px;
+            margin: 0 auto;
+            position: relative;
+            overflow: hidden;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
         }
-        th, td {
-            border: 1px solid #ddd;
-            padding: 8px;
+
+        /* Slides */
+        .carousel-slide {
+            display: none;
             text-align: center;
-        }
-        th {
-            background-color: #ff8000;
-            color: white;
-        }
-        tr:nth-child(even) {
+            padding: 20px;
             background-color: #f2f2f2;
         }
-        input[type="text"] {
-            width: 90%;
-            padding: 5px;
+
+        .carousel-slide.active {
+            display: block;
         }
-        button {
-            padding: 5px 10px;
-            border: none;
+
+        /* Slide image */
+        .carousel-slide img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+        }
+
+        /* Slide title */
+        .carousel-slide h2 {
+            color: #ff8000;
+            margin: 20px 0;
+        }
+
+        /* Bulleted text */
+        .carousel-slide ul {
+            text-align: left;
+            display: inline-block;
+            list-style-type: disc;
+            color: #e67300;
+            margin: 0;
+            padding-left: 20px;
+        }
+
+        /* Carousel buttons */
+        .prev, .next {
             background-color: #173fc2;
             color: white;
+            padding: 10px 20px;
+            border: none;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
             cursor: pointer;
         }
-        button:disabled {
-            background-color: #ccc;
-            cursor: not-allowed;
+
+        .prev {
+            left: 10px;
         }
-        .sticker {
-            width: 50px;
-            display: none;
+
+        .next {
+            right: 10px;
         }
+
+        .prev:hover, .next:hover {
+            background-color: #ff8000;
+        }
+
+        /* Dots navigation */
+        .carousel-dots {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .dot {
+            height: 15px;
+            width: 15px;
+            margin: 0 5px;
+            background-color: #e67300;
+            border-radius: 50%;
+            display: inline-block;
+            cursor: pointer;
+        }
+
+        .dot.active {
+            background-color: #ff8000;
+        }
+
     </style>
 </head>
 <body>
 
-    <h1>Team Training Tracker</h1>
-    <p>Grab yourself an Alias and record your development progress below. You'll find resources on the next page.</p>
-    <a href="trailmixes.html" style="display: block; text-align: center; margin-top: 20px; color: #ff8000; text-decoration: none; font-weight: bold;">Go to Training Resources</a>
-<a href="progress.html" style="display: block; text-align: center; margin-top: 20px; color: #ff8000; text-decoration: none; font-weight: bold;">Go to Our Progress</a>
+    <h1>Our Progress</h1>
 
-    <table>
-        <thead>
-            <tr>
-                <th>Alias</th>
-                <th>Certificate/Course Name</th>
-                <th>Course Details</th>
-                <th>Complete</th>
-                <th>Sticker</th>
-            </tr>
-        </thead>
-        <tbody id="trainingTable">
-            <tr data-index="1">
-                <td><input type="text" id="alias1" placeholder="Alias 1"></td>
-                <td><input type="text" id="course1" placeholder="Course Name"></td>
-                <td><input type="text" id="details1" placeholder="Course Details"></td>
-                <td><button onclick="completeTask(this, 1)">Complete</button></td>
-                <td><img class="sticker" src="https://media.giphy.com/media/YTbZzCkRQCEJa/giphy.gif" alt="sticker"></td>
-            </tr>
-            <tr data-index="2">
-                <td><input type="text" id="alias2" placeholder="Alias 2"></td>
-                <td><input type="text" id="course2" placeholder="Course Name"></td>
-                <td><input type="text" id="details2" placeholder="Course Details"></td>
-                <td><button onclick="completeTask(this, 2)">Complete</button></td>
-                <td><img class="sticker" src="https://media.giphy.com/media/JC2GnSClbPOkV0eA/giphy.gif" alt="sticker"></td>
-            </tr>
-<tr data-index="3">
-                <td><input type="text" id="alias3" placeholder="Alias 3"></td>
-                <td><input type="text" id="course3" placeholder="Course Name"></td>
-                <td><input type="text" id="details3" placeholder="Course Details"></td>
-                <td><button onclick="completeTask(this, 3)">Complete</button></td>
-                <td><img class="sticker" src="https://media.giphy.com/media/xT9IgG50Fb7Mi0prBC/giphy.gif" alt="sticker"></td>
-            </tr>
-<tr data-index="4">
-                <td><input type="text" id="alias4" placeholder="Alias 4"></td>
-                <td><input type="text" id="course4" placeholder="Course Name"></td>
-                <td><input type="text" id="details4" placeholder="Course Details"></td>
-                <td><button onclick="completeTask(this, 4)">Complete</button></td>
-                <td><img class="sticker" src="https://media.giphy.com/media/xT9IgG50Fb7Mi0prBC/giphy.gif" alt="sticker"></td>
-            </tr>
-<tr data-index="5">
-                <td><input type="text" id="alias5" placeholder="Alias 5"></td>
-                <td><input type="text" id="course5" placeholder="Course Name"></td>
-                <td><input type="text" id="details5" placeholder="Course Details"></td>
-                <td><button onclick="completeTask(this, 5)">Complete</button></td>
-                <td><img class="sticker" src="https://media.giphy.com/media/xT9IgG50Fb7Mi0prBC/giphy.gif" alt="sticker"></td>
-            </tr>
-<tr data-index="6">
-                <td><input type="text" id="alias6" placeholder="Alias 6"></td>
-                <td><input type="text" id="course6" placeholder="Course Name"></td>
-                <td><input type="text" id="details6" placeholder="Course Details"></td>
-                <td><button onclick="completeTask(this, 6)">Complete</button></td>
-                <td><img class="sticker" src="https://media.giphy.com/media/xT9IgG50Fb7Mi0prBC/giphy.gif" alt="sticker"></td>
-            </tr>
-<tr data-index="7">
-                <td><input type="text" id="alias7" placeholder="Alias 7"></td>
-                <td><input type="text" id="course7" placeholder="Course Name"></td>
-                <td><input type="text" id="details7" placeholder="Course Details"></td>
-                <td><button onclick="completeTask(this, 7)">Complete</button></td>
-                <td><img class="sticker" src="https://media.giphy.com/media/xT9IgG50Fb7Mi0prBC/giphy.gif" alt="sticker"></td>
-            </tr>
-<tr data-index="8">
-                <td><input type="text" id="alias8" placeholder="Alias 8"></td>
-                <td><input type="text" id="course8" placeholder="Course Name"></td>
-                <td><input type="text" id="details8" placeholder="Course Details"></td>
-                <td><button onclick="completeTask(this, 8)">Complete</button></td>
-                <td><img class="sticker" src="https://media.giphy.com/media/xT9IgG50Fb7Mi0prBC/giphy.gif" alt="sticker"></td>
-            </tr>
-<tr data-index="9">
-                <td><input type="text" id="alias9" placeholder="Alias 9"></td>
-                <td><input type="text" id="course9" placeholder="Course Name"></td>
-                <td><input type="text" id="details9" placeholder="Course Details"></td>
-                <td><button onclick="completeTask(this, 9)">Complete</button></td>
-                <td><img class="sticker" src="https://media.giphy.com/media/xT9IgG50Fb7Mi0prBC/giphy.gif" alt="sticker"></td>
-            </tr>
-<tr data-index="10">
-                <td><input type="text" id="alias10" placeholder="Alias 10"></td>
-                <td><input type="text" id="course10" placeholder="Course Name"></td>
-                <td><input type="text" id="details10" placeholder="Course Details"></td>
-                <td><button onclick="completeTask(this, 10)">Complete</button></td>
-                <td><img class="sticker" src="https://media.giphy.com/media/xT9IgG50Fb7Mi0prBC/giphy.gif" alt="sticker"></td>
-            </tr>
-<tr data-index="11">
-                <td><input type="text" id="alias11" placeholder="Alias 11"></td>
-                <td><input type="text" id="course11" placeholder="Course Name"></td>
-                <td><input type="text" id="details11" placeholder="Course Details"></td>
-                <td><button onclick="completeTask(this, 11)">Complete</button></td>
-                <td><img class="sticker" src="https://media.giphy.com/media/xT9IgG50Fb7Mi0prBC/giphy.gif" alt="sticker"></td>
-            </tr>
-<tr data-index="12">
-                <td><input type="text" id="alias12" placeholder="Alias 12"></td>
-                <td><input type="text" id="course12" placeholder="Course Name"></td>
-                <td><input type="text" id="details12" placeholder="Course Details"></td>
-                <td><button onclick="completeTask(this, 12)">Complete</button></td>
-                <td><img class="sticker" src="https://media.giphy.com/media/xT9IgG50Fb7Mi0prBC/giphy.gif" alt="sticker"></td>
-            </tr>
-        </tbody>
-    </table>
+    <div class="carousel-container">
+        <!-- Slide 1 -->
+        <div class="carousel-slide active">
+            <img src="https://via.placeholder.com/800x400?text=Slide+1" alt="Slide 1">
+            <h2>Slide 1 Title</h2>
+            <ul>
+                <li>Bullet point 1</li>
+                <li>Bullet point 2</li>
+                <li>Bullet point 3</li>
+            </ul>
+        </div>
+
+        <!-- Slide 2 -->
+        <div class="carousel-slide">
+            <img src="https://via.placeholder.com/800x400?text=Slide+2" alt="Slide 2">
+            <h2>Slide 2 Title</h2>
+            <ul>
+                <li>Bullet point 1</li>
+                <li>Bullet point 2</li>
+                <li>Bullet point 3</li>
+            </ul>
+        </div>
+
+        <!-- Slide 3 -->
+        <div class="carousel-slide">
+            <img src="https://via.placeholder.com/800x400?text=Slide+3" alt="Slide 3">
+            <h2>Slide 3 Title</h2>
+            <ul>
+                <li>Bullet point 1</li>
+                <li>Bullet point 2</li>
+                <li>Bullet point 3</li>
+            </ul>
+        </div>
+
+        <!-- Slide 4 -->
+        <div class="carousel-slide">
+            <img src="https://via.placeholder.com/800x400?text=Slide+4" alt="Slide 4">
+            <h2>Slide 4 Title</h2>
+            <ul>
+                <li>Bullet point 1</li>
+                <li>Bullet point 2</li>
+                <li>Bullet point 3</li>
+            </ul>
+        </div>
+
+        <!-- Slide 5 -->
+        <div class="carousel-slide">
+            <img src="https://via.placeholder.com/800x400?text=Slide+5" alt="Slide 5">
+            <h2>Slide 5 Title</h2>
+            <ul>
+                <li>Bullet point 1</li>
+                <li>Bullet point 2</li>
+                <li>Bullet point 3</li>
+            </ul>
+        </div>
+
+        <!-- Slide 6 -->
+        <div class="carousel-slide">
+            <img src="https://via.placeholder.com/800x400?text=Slide+6" alt="Slide 6">
+            <h2>Slide 6 Title</h2>
+            <ul>
+                <li>Bullet point 1</li>
+                <li>Bullet point 2</li>
+                <li>Bullet point 3</li>
+            </ul>
+        </div>
+
+        <!-- Slide 7 -->
+        <div class="carousel-slide">
+            <img src="https://via.placeholder.com/800x400?text=Slide+7" alt="Slide 7">
+            <h2>Slide 7 Title</h2>
+            <ul>
+                <li>Bullet point 1</li>
+                <li>Bullet point 2</li>
+                <li>Bullet point 3</li>
+            </ul>
+        </div>
+
+        <!-- Slide 8 -->
+        <div class="carousel-slide">
+            <img src="https://via.placeholder.com/800x400?text=Slide+8" alt="Slide 8">
+            <h2>Slide 8 Title</h2>
+            <ul>
+                <li>Bullet point 1</li>
+                <li>Bullet point 2</li>
+                <li>Bullet point 3</li>
+            </ul>
+        </div>
+
+        <!-- Navigation buttons -->
+        <button class="prev" onclick="moveSlide(-1)">❮ Prev</button>
+        <button class="next" onclick="moveSlide(1)">Next ❯</button>
+    </div>
+
+    <!-- Dots for navigation -->
+    <div class="carousel-dots">
+        <span class="dot active" onclick="currentSlide(1)"></span>
+        <span class="dot" onclick="currentSlide(2)"></span>
+        <span class="dot" onclick="currentSlide(3)"></span>
+        <span class="dot" onclick="currentSlide(4)"></span>
+        <span class="dot" onclick="currentSlide(5)"></span>
+        <span class="dot" onclick="currentSlide(6)"></span>
+        <span class="dot" onclick="currentSlide(7)"></span>
+        <span class="dot" onclick="currentSlide(8)"></span>
+    </div>
 
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            // Load stored values
-            loadSavedValues();
+        let currentSlideIndex = 1;
+        showSlide(currentSlideIndex);
 
-            // Save input values to localStorage when they change
-            document.querySelectorAll('input[type="text"]').forEach(input => {
-                input.addEventListener('input', function() {
-                    const id = this.id;
-                    localStorage.setItem(id, this.value);
-
-                    // Check if all inputs are cleared to re-enable the button and hide sticker
-                    const row = this.closest('tr');
-                    const alias = row.querySelector(`#alias${row.getAttribute('data-index')}`).value;
-                    const course = row.querySelector(`#course${row.getAttribute('data-index')}`).value;
-                    const details = row.querySelector(`#details${row.getAttribute('data-index')}`).value;
-                    const button = row.querySelector('button');
-                    const sticker = row.querySelector('.sticker');
-
-                    if (alias === '' || course === '' || details === '') {
-                        button.disabled = false;
-                        button.innerText = 'Complete'; // Reset button text
-                        button.style.backgroundColor = '#173fc2'; // Re-enable with orange color
-                        sticker.style.display = 'none'; // Hide sticker
-                        localStorage.setItem('completed' + row.getAttribute('data-index'), 'false');
-                    }
-                });
-            });
-        });
-
-        function loadSavedValues() {
-            // Load the saved input values from localStorage
-            document.querySelectorAll('input[type="text"]').forEach(input => {
-                const id = input.id;
-                if (localStorage.getItem(id)) {
-                    input.value = localStorage.getItem(id);
-                }
-            });
-
-            // Load the saved completion status and show the stickers if marked complete
-            document.querySelectorAll('tr').forEach(row => {
-                const index = row.getAttribute('data-index');
-                const completed = localStorage.getItem('completed' + index);
-                const button = row.querySelector('button');
-                const sticker = row.querySelector('.sticker');
-
-                if (completed === 'true') {
-                    button.disabled = true;
-                    button.innerText = 'Complete';
-                    sticker.style.display = 'block'; // Show sticker
-                }
-            });
+        function moveSlide(n) {
+            showSlide(currentSlideIndex += n);
         }
 
-        function completeTask(button, index) {
-            let row = button.parentElement.parentElement;
-            let sticker = row.querySelector('.sticker');
+        function currentSlide(n) {
+            showSlide(currentSlideIndex = n);
+        }
 
-            if (!button.disabled) {
-                // Mark the task as complete by greying out the button and showing the sticker
-                button.disabled = true;
-                button.innerText = 'Complete'; // Keep button text as 'Complete'
-                button.style.backgroundColor = '#ccc'; // Grey out the button
-                sticker.style.display = 'block'; // Show sticker
-                localStorage.setItem('completed' + index, 'true'); // Save status as complete
+        function showSlide(n) {
+            let i;
+            const slides = document.getElementsByClassName("carousel-slide");
+            const dots = document.getElementsByClassName("dot");
+            if (n > slides.length) { currentSlideIndex = 1; }
+            if (n < 1) { currentSlideIndex = slides.length; }
+            for (i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";
             }
+            for (i = 0; i < dots.length; i++) {
+                dots[i].className = dots[i].className.replace(" active", "");
+            }
+            slides[currentSlideIndex - 1].style.display = "block";
+            dots[currentSlideIndex - 1].className += " active";
         }
     </script>
 
 </body>
 </html>
-
