@@ -1,1 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Progress</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
+            margin: 0;
+            padding: 0;
+        }
+
+        h1 {
+            text-align: center;
+            color: #173fc2;
+            margin-top: 20px;
+        }
+
+        /* Carousel container */
+        .carousel-container {
+            width: 100%;
+            max-width: 1000px;
+            margin: 0 auto;
+            position: relative;
+            overflow: hidden;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        /* Slides */
+        .carousel-slide {
+            display: none;
+            text-align: center;
+            padding: 20px;
+            background-color: #f2f2f2;
+        }
+
+        .carousel-slide.active {
+            display: block;
+        }
+
+        /* Slide image */
+        .carousel-slide img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+        }
+
+        /* Slide title */
+        .carousel-slide h2 {
+            color: #ff8000;
+            margin: 20px 0;
+        }
+
+        /* Bulleted text */
+        .carousel-slide ul {
+            text-align: left;
+            display: inline-block;
+            list-style-type: disc;
+            color: #e67300;
+            margin: 0;
+            padding-left: 20px;
+        }
+
+        /* Carousel buttons */
+        .prev, .next {
+            background-color: #173fc2;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            cursor: pointer;
+        }
+
+        .prev {
+            left: 10px;
+        }
+
+        .next {
+            right: 10px;
+        }
+
+        .prev:hover, .next:hover {
+            background-color: #ff8000;
+        }
+
+        /* Dots navigation */
+        .carousel-dots {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .dot {
+            height: 15px;
+            width: 15px;
+            margin: 0 5px;
+            background-color: #e67300;
+            border-radius: 50%;
+            display: inline-block;
+            cursor: pointer;
+        }
+
+        .dot.active {
+            background-color: #ff8000;
+        }
+
+    </style>
+</head>
+<body>
+
+    <h1>Our Progress</h1>
+
+    <div class="carousel-container">
+        <!-- Slide 1 -->
+        <div class="carousel-slide active">
+            <img src="https://via.placeholder.com/800x400?text=Slide+1" alt="Slide 1">
+            <h2>Slide 1 Title</h2>
+            <ul>
+                <li>Bullet point 1</li>
+                <li>Bullet point 2</li>
+                <li>Bullet point 3</li>
+            </ul>
+        </div>
+
+        <!-- Slide 2 -->
+        <div class="carousel-slide">
+            <img src="https://via.placeholder.com/800x400?text=Slide+2" alt="Slide 2">
+            <h2>Slide 2 Title</h2>
+            <ul>
+                <li>Bullet point 1</li>
+                <li>Bullet point 2</li>
+                <li>Bullet point 3</li>
+            </ul>
+        </div>
+
+        <!-- Slide 3 -->
+        <div class="carousel-slide">
+            <img src="https://via.placeholder.com/800x400?text=Slide+3" alt="Slide 3">
+            <h2>Slide 3 Title</h2>
+            <ul>
+                <li>Bullet point 1</li>
+                <li>Bullet point 2</li>
+                <li>Bullet point 3</li>
+            </ul>
+        </div>
+
+        <!-- Slide 4 -->
+        <div class="carousel-slide">
+            <img src="https://via.placeholder.com/800x400?text=Slide+4" alt="Slide 4">
+            <h2>Slide 4 Title</h2>
+            <ul>
+                <li>Bullet point 1</li>
+                <li>Bullet point 2</li>
+                <li>Bullet point 3</li>
+            </ul>
+        </div>
+
+        <!-- Slide 5 -->
+        <div class="carousel-slide">
+            <img src="https://via.placeholder.com/800x400?text=Slide+5" alt="Slide 5">
+            <h2>Slide 5 Title</h2>
+            <ul>
+                <li>Bullet point 1</li>
+                <li>Bullet point 2</li>
+                <li>Bullet point 3</li>
+            </ul>
+        </div>
+
+        <!-- Slide 6 -->
+        <div class="carousel-slide">
+            <img src="https://via.placeholder.com/800x400?text=Slide+6" alt="Slide 6">
+            <h2>Slide 6 Title</h2>
+            <ul>
+                <li>Bullet point 1</li>
+                <li>Bullet point 2</li>
+                <li>Bullet point 3</li>
+            </ul>
+        </div>
+
+        <!-- Slide 7 -->
+        <div class="carousel-slide">
+            <img src="https://via.placeholder.com/800x400?text=Slide+7" alt="Slide 7">
+            <h2>Slide 7 Title</h2>
+            <ul>
+                <li>Bullet point 1</li>
+                <li>Bullet point 2</li>
+                <li>Bullet point 3</li>
+            </ul>
+        </div>
+
+        <!-- Slide 8 -->
+        <div class="carousel-slide">
+            <img src="https://via.placeholder.com/800x400?text=Slide+8" alt="Slide 8">
+            <h2>Slide 8 Title</h2>
+            <ul>
+                <li>Bullet point 1</li>
+                <li>Bullet point 2</li>
+                <li>Bullet point 3</li>
+            </ul>
+        </div>
+
+        <!-- Navigation buttons -->
+        <button class="prev" onclick="moveSlide(-1)">❮ Prev</button>
+        <button class="next" onclick="moveSlide(1)">Next ❯</button>
+    </div>
+
+    <!-- Dots for navigation -->
+    <div class="carousel-dots">
+        <span class="dot active" onclick="currentSlide(1)"></span>
+        <span class="dot" onclick="currentSlide(2)"></span>
+        <span class="dot" onclick="currentSlide(3)"></span>
+        <span class="dot" onclick="currentSlide(4)"></span>
+        <span class="dot" onclick="currentSlide(5)"></span>
+        <span class="dot" onclick="currentSlide(6)"></span>
+        <span class="dot" onclick="currentSlide(7)"></span>
+        <span class="dot" onclick="currentSlide(8)"></span>
+    </div>
+
+    <script>
+        let currentSlideIndex = 1;
+        showSlide(currentSlideIndex);
+
+        function moveSlide(n) {
+            showSlide(currentSlideIndex += n);
+        }
+
+        function currentSlide(n) {
+            showSlide(currentSlideIndex = n);
+        }
+
+        function showSlide(n) {
+            let i;
+            const slides = document.getElementsByClassName("carousel-slide");
+            const dots = document.getElementsByClassName("dot");
+            if (n > slides.length) { currentSlideIndex = 1; }
+            if (n < 1) { currentSlideIndex = slides.length; }
+            for (i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";
+            }
+            for (i = 0; i < dots.length; i++) {
+                dots[i].className = dots[i].className.replace(" active", "");
+            }
+            slides[currentSlideIndex - 1].style.display = "block";
+            dots[currentSlideIndex - 1].className += " active";
+        }
+    </script>
+
+</body>
+</html>
 
