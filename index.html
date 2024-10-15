@@ -45,45 +45,19 @@
         </tbody>
     </table>
     <script>
-        document.getElementById('updateForm').addEventListener('submit', function(event) {
-            event.preventDefault();
-            
-            const data = {
-                row: document.getElementById('alias1').value,
-                col: document.getElementById('course1').value,
-                value: document.getElementById('details1').value,
-                sheetId: "**136GLheziPXhzeBm_7WGAcuk7oZfn5bTVDLSLiptX3Pk**" // Replace with your actual Google Sheet ID
-            };
-
-            fetch('**https://script.google.com/macros/s/AKfycbzwjmX3MYh5dnoUzJiTLCRlV2-rAi8-HOqvMSmdy3KRaqY3EaEKYajMOtOKBx9NIR2y/exec**', { // Replace with your actual Apps Script URL
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(data)
-            })
-            .then(response => response.text())
-            .then(responseText => {
-                console.log(responseText);
-            })
-            .catch(error => {
-                console.error('Error:', error);
-            });
-        });
-
         function completeTask(button, index) {
-            const row = index + 1;
-            const col = 1;
-            const value = document.getElementById('alias' + index).value;
-            
+            const row = document.getElementById('alias' + index).value;
+            const col = document.getElementById('course' + index).value;
+            const value = document.getElementById('details' + index).value;
+
             const data = {
                 row: row,
                 col: col,
                 value: value,
                 sheetId: "136GLheziPXhzeBm_7WGAcuk7oZfn5bTVDLSLiptX3Pk" // Replace with your actual Google Sheet ID
             };
-            
-            fetch('https://script.google.com/macros/s/AKfycbzwjmX3MYh5dnoUzJiTLCRlV2-rAi8-HOqvMSmdy3KRaqY3EaEKYajMOtOKBx9NIR2y/exec', { // Replace with your actual Apps Script URL
+
+            fetch('https://script.google.com/macros/s/AKfycbwnxF8Hesid4BvObIlwT2krAcg0FQi2gJng8HiJFG-Ir-zXqqpAHp_pm6ZrkeHKXNla/exec', { // Replace with your actual Apps Script URL
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
