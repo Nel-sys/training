@@ -3,56 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Training Hub</title>
+    <title>Test Button Click</title>
     <style>
-        body { font-family: Arial, sans-serif; background-color: #f9f9f9; margin: 0; padding: 20px; }
-        h1 { text-align: center; }
-        input[type="text"] { width: 90%; padding: 5px; }
+        body { font-family: Arial, sans-serif; }
         button { padding: 10px 20px; background-color: #125fca; color: white; border: none; cursor: pointer; }
     </style>
 </head>
 <body>
-    <h1>Team Training Tracker</h1>
-    <input type="text" id="alias1" placeholder="Alias 1">
-    <input type="text" id="course1" placeholder="Course Name">
-    <input type="text" id="details1" placeholder="Course Details">
-    <button id="completeButton">Complete</button>
+    <button id="testButton">Click Me</button>
 
     <script>
-        document.getElementById('completeButton').addEventListener('click', function() {
-            const alias = document.getElementById('alias1').value;
-            const course = document.getElementById('course1').value;
-            const details = document.getElementById('details1').value;
-
-            const data = {
-                row: 1, // Example row number
-                alias: alias,
-                course: course,
-                details: details,
-                sheetId: "136GLheziPXhzeBm_7WGAcuk7oZfn5bTVDLSLiptX3Pk" // Replace with your actual Google Sheet ID
-            };
-
-            console.log('Sending data:', data); // Log data to console for debugging
-
-            fetch('https://script.google.com/macros/s/AKfycbzzp39FnCGcB4DYcZOxSVHR9AT0AUlxaC_8QM7w18verHfIv0kfrdrZU57wxioLRti5/exec', { // Replace with your actual Apps Script URL
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(data)
-            })
-            .then(response => response.text())
-            .then(responseText => {
-                console.log(responseText);
-                if (responseText === 'Success') {
-                    alert('Google Sheet updated successfully');
-                } else {
-                    alert('Failed to update Google Sheet');
-                }
-            })
-            .catch(error => {
-                console.error('Error:', error);
-            });
+        document.getElementById('testButton').addEventListener('click', function() {
+            alert('Button clicked!');
         });
     </script>
 </body>
