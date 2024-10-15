@@ -5,67 +5,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Training Hub</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f9f9f9;
-            margin: 0;
-            padding: 20px;
-        }
-        h1 {
-            text-align: center;
-        }
-        p {
-            text-align: center;
-        }
-        table {
-            width: 100%;
-            max-width: 800px;
-            margin: 20px auto;
-            border-collapse: collapse;
-        }
-        th, td {
-            border: 1px solid #ddd;
-            padding: 8px;
-            text-align: center;
-        }
-        th {
-            background-color: #ff8000;
-            color: white;
-            border-radius: 5px;
-        }
-        tr:nth-child(even) {
-            background-color: #f2f2f2;
-        }
-        input[type="text"] {
-            width: 90%;
-            padding: 5px;
-        }
-        button {
-            padding: 5px 10px;
-            border: none;
-            background-color: #125fca;
-            color: white;
-            cursor: pointer;
-            font-size: 16px;
-            border-radius: 5px;
-        }
-        button:disabled {
-            background-color: #ccc;
-            cursor: not-allowed;
-        }
-        .sticker {
-            width: 50px;
-            display: none;
-        }
+        body { font-family: Arial, sans-serif; background-color: #f9f9f9; margin: 0; padding: 20px; }
+        h1 { text-align: center; }
+        p { text-align: center; }
+        table { width: 100%; max-width: 800px; margin: 20px auto; border-collapse: collapse; }
+        th, td { border: 1px solid #ddd; padding: 8px; text-align: center; }
+        th { background-color: #ff8000; color: white; border-radius: 5px; }
+        tr:nth-child(even) { background-color: #f2f2f2; }
+        input[type="text"] { width: 90%; padding: 5px; }
+        button { padding: 5px 10px; border: none; background-color: #125fca; color: white; cursor: pointer; font-size: 16px; border-radius: 5px; }
+        button:disabled { background-color: #ccc; cursor: not-allowed; }
+        .sticker { width: 50px; display: none; }
     </style>
 </head>
 <body>
-
     <h1>Team Training Tracker</h1>
     <p>Grab yourself an Alias and record your development progress below. You'll find resources on the next page.</p>
     <a href="trailmixes.html" style="display: block; text-align: center; margin-top: 20px; color: #ff8000; text-decoration: none; font-weight: bold;">Go to Training Resources</a>
     <a href="progress.html" style="display: block; text-align: center; margin-top: 20px; color: #ff8000; text-decoration: none; font-weight: bold;">Go to Our Progress</a>
-
     <table>
         <thead>
             <tr>
@@ -87,31 +44,64 @@
             <!-- Add more rows as needed -->
         </tbody>
     </table>
-
     <script>
-const data = {
-    row: 1,
-    col: 2,
-    value: "Your Value",
-    sheetId: "**136GLheziPXhzeBm_7WGAcuk7oZfn5bTVDLSLiptX3Pk**" // Replace with your actual Google Sheet ID
-};
+        document.getElementById('updateForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            
+            const data = {
+                row: document.getElementById('alias1').value,
+                col: document.getElementById('course1').value,
+                value: document.getElementById('details1').value,
+                sheetId: "**136GLheziPXhzeBm_7WGAcuk7oZfn5bTVDLSLiptX3Pk**" // Replace with your actual Google Sheet ID
+            };
 
-fetch('**https://script.google.com/macros/s/AKfycbzwjmX3MYh5dnoUzJiTLCRlV2-rAi8-HOqvMSmdy3KRaqY3EaEKYajMOtOKBx9NIR2y/exec**', { // Replace with your actual Apps Script URL
-    method: 'POST',
-    headers: {
-        'Content-Type': 'application/json'
-    },
-    body: JSON.stringify(data)
-})
-.then(response => response.text())
-.then(responseText => {
-    console.log(responseText);
-})
-.catch(error => {
-    console.error('Error:', error);
-});
+            fetch('**https://script.google.com/macros/s/AKfycbzwjmX3MYh5dnoUzJiTLCRlV2-rAi8-HOqvMSmdy3KRaqY3EaEKYajMOtOKBx9NIR2y/exec**', { // Replace with your actual Apps Script URL
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(data)
+            })
+            .then(response => response.text())
+            .then(responseText => {
+                console.log(responseText);
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+        });
 
+        function completeTask(button, index) {
+            const row = index + 1;
+            const col = 1;
+            const value = document.getElementById('alias' + index).value;
+            
+            const data = {
+                row: row,
+                col: col,
+                value: value,
+                sheetId: "136GLheziPXhzeBm_7WGAcuk7oZfn5bTVDLSLiptX3Pk" // Replace with your actual Google Sheet ID
+            };
+            
+            fetch('https://script.google.com/macros/s/AKfycbzwjmX3MYh5dnoUzJiTLCRlV2-rAi8-HOqvMSmdy3KRaqY3EaEKYajMOtOKBx9NIR2y/exec', { // Replace with your actual Apps Script URL
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(data)
+            })
+            .then(response => response.text())
+            .then(responseText => {
+                console.log(responseText);
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+
+            // Additional actions for the button (e.g., showing the sticker)
+            button.disabled = true;
+            document.querySelectorAll('.sticker')[index - 1].style.display = 'block';
+        }
     </script>
-
 </body>
 </html>
