@@ -52,14 +52,15 @@
 
             const data = {
                 row: index + 1, // Assuming first row is header
-                col: 1, // Modify based on your sheet structure, col 1 as an example
                 alias: alias,
                 course: course,
                 details: details,
                 sheetId: "136GLheziPXhzeBm_7WGAcuk7oZfn5bTVDLSLiptX3Pk" // Replace with your actual Google Sheet ID
             };
 
-            fetch('https://script.google.com/macros/s/AKfycbw4eRNcrc4oYyEQDXm2GY7UhxG-krUB_Yk5KgnMun4bX_9nDZ_I_gtXSNQTtZwZ-jlH/exec', { // Replace with your actual Apps Script URL
+            console.log('Sending data:', data); // Log data to console for debugging
+
+            fetch('https://script.google.com/macros/s/AKfycbzzp39FnCGcB4DYcZOxSVHR9AT0AUlxaC_8QM7w18verHfIv0kfrdrZU57wxioLRti5/exec', { // Replace with your actual Apps Script URL
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
