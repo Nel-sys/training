@@ -165,7 +165,7 @@ font-size: 16px;
     </table>
 
     <script>
-    const SHEET_URL = "https://script.google.com/macros/s/AKfycbyoS8uJ1zR67POR3m2Aoqh5w2EztLl4IgrmKL8LFAQ/dev"; // Replace with your Google Apps Script Web App URL
+    const SHEET_URL = "https://script.google.com/macros/s/AKfycbzsedFf4xmrLC6wu5X_Hjjl6wsKpjm2eeqdRqW38KVl3FWwdxuMLwew_bxCUIRMv0mq/exec"; // Replace with your Google Apps Script Web App URL
 
     document.addEventListener('DOMContentLoaded', function () {
         loadSavedValues();
@@ -214,24 +214,25 @@ font-size: 16px;
     }
 
     function updateSheet(row, col, value) {
-        const postData = {
-            row: row,
-            col: col,
-            value: value
-        };
+    const postData = {
+        row: row,
+        col: col,
+        value: value
+    };
 
-        fetch(SHEET_URL, {
-            method: 'POST',
-            body: JSON.stringify(postData),
-            headers: {
-                'Content-Type': 'application/json'
-            }
-        }).then(response => response.text()).then(data => {
-            console.log("Update Success: ", data);
-        }).catch(err => {
-            console.error("Error updating sheet: ", err);
-        });
-    }
+    fetch(SHEET_URL, {
+        method: 'POST',
+        body: JSON.stringify(postData),
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    }).then(response => response.text()).then(data => {
+        console.log("Update Success: ", data);
+    }).catch(err => {
+        console.error("Error updating sheet: ", err);
+        alert("Failed to save data. Please check your internet connection.");
+    });
+}
 
     function completeTask(button, index) {
         let row = parseInt(index) + 1;
