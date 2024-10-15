@@ -38,14 +38,14 @@
                 <td><input type="text" id="alias1" placeholder="Alias 1"></td>
                 <td><input type="text" id="course1" placeholder="Course Name"></td>
                 <td><input type="text" id="details1" placeholder="Course Details"></td>
-                <td><button onclick="completeTask(this, 1)">Complete</button></td>
+                <td><button onclick="completeTask(1)">Complete</button></td>
                 <td><img class="sticker" src="https://media.giphy.com/media/YTbZzCkRQCEJa/giphy.gif" alt="sticker"></td>
             </tr>
             <!-- Add more rows as needed -->
         </tbody>
     </table>
     <script>
-        function completeTask(button, index) {
+        function completeTask(index) {
             const alias = document.getElementById('alias' + index).value;
             const course = document.getElementById('course' + index).value;
             const details = document.getElementById('details' + index).value;
@@ -71,7 +71,6 @@
             .then(responseText => {
                 console.log(responseText);
                 if (responseText === 'Success') {
-                    button.disabled = true;
                     document.querySelectorAll('.sticker')[index - 1].style.display = 'block';
                 } else {
                     alert('Failed to update Google Sheet');
