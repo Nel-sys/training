@@ -46,18 +46,20 @@
     </table>
     <script>
         function completeTask(button, index) {
-            const row = document.getElementById('alias' + index).value;
-            const col = document.getElementById('course' + index).value;
-            const value = document.getElementById('details' + index).value;
+            const alias = document.getElementById('alias' + index).value;
+            const course = document.getElementById('course' + index).value;
+            const details = document.getElementById('details' + index).value;
 
             const data = {
-                row: row,
-                col: col,
-                value: value,
+                row: index + 1, // Assuming first row is header
+                col: 1, // Modify based on your sheet structure, col 1 as an example
+                alias: alias,
+                course: course,
+                details: details,
                 sheetId: "136GLheziPXhzeBm_7WGAcuk7oZfn5bTVDLSLiptX3Pk" // Replace with your actual Google Sheet ID
             };
 
-            fetch('https://script.google.com/macros/s/AKfycbwnxF8Hesid4BvObIlwT2krAcg0FQi2gJng8HiJFG-Ir-zXqqpAHp_pm6ZrkeHKXNla/exec', { // Replace with your actual Apps Script URL
+            fetch('https://script.google.com/macros/s/AKfycbw4eRNcrc4oYyEQDXm2GY7UhxG-krUB_Yk5KgnMun4bX_9nDZ_I_gtXSNQTtZwZ-jlH/exec', { // Replace with your actual Apps Script URL
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -67,14 +69,16 @@
             .then(response => response.text())
             .then(responseText => {
                 console.log(responseText);
+                if (responseText === 'Success') {
+                    button.disabled = true;
+                    document.querySelectorAll('.sticker')[index - 1].style.display = 'block';
+                } else {
+                    alert('Failed to update Google Sheet');
+                }
             })
             .catch(error => {
                 console.error('Error:', error);
             });
-
-            // Additional actions for the button (e.g., showing the sticker)
-            button.disabled = true;
-            document.querySelectorAll('.sticker')[index - 1].style.display = 'block';
         }
     </script>
 </body>
