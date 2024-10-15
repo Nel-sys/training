@@ -3,83 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Training Hub</title>
+    <title>Test Button Click</title>
     <style>
-        body { font-family: Arial, sans-serif; background-color: #f9f9f9; margin: 0; padding: 20px; }
-        h1 { text-align: center; }
-        p { text-align: center; }
-        table { width: 100%; max-width: 800px; margin: 20px auto; border-collapse: collapse; }
-        th, td { border: 1px solid #ddd; padding: 8px; text-align: center; }
-        th { background-color: #ff8000; color: white; border-radius: 5px; }
-        tr:nth-child(even) { background-color: #f2f2f2; }
-        input[type="text"] { width: 90%; padding: 5px; }
-        button { padding: 5px 10px; border: none; background-color: #125fca; color: white; cursor: pointer; font-size: 16px; border-radius: 5px; }
-        button:disabled { background-color: #ccc; cursor: not-allowed; }
-        .sticker { width: 50px; display: none; }
+        body { font-family: Arial, sans-serif; }
+        button { padding: 10px 20px; background-color: #125fca; color: white; border: none; cursor: pointer; }
     </style>
 </head>
 <body>
-    <h1>Team Training Tracker</h1>
-    <p>Grab yourself an Alias and record your development progress below. You'll find resources on the next page.</p>
-    <a href="trailmixes.html" style="display: block; text-align: center; margin-top: 20px; color: #ff8000; text-decoration: none; font-weight: bold;">Go to Training Resources</a>
-    <a href="progress.html" style="display: block; text-align: center; margin-top: 20px; color: #ff8000; text-decoration: none; font-weight: bold;">Go to Our Progress</a>
-    <table>
-        <thead>
-            <tr>
-                <th>Alias</th>
-                <th>Course Name</th>
-                <th>Course Details</th>
-                <th>Complete</th>
-                <th>Sticker</th>
-            </tr>
-        </thead>
-        <tbody id="trainingTable">
-            <tr data-index="1">
-                <td><input type="text" id="alias1" placeholder="Alias 1"></td>
-                <td><input type="text" id="course1" placeholder="Course Name"></td>
-                <td><input type="text" id="details1" placeholder="Course Details"></td>
-                <td><button onclick="completeTask(1)">Complete</button></td>
-                <td><img class="sticker" src="https://media.giphy.com/media/YTbZzCkRQCEJa/giphy.gif" alt="sticker"></td>
-            </tr>
-            <!-- Add more rows as needed -->
-        </tbody>
-    </table>
+    <button id="testButton">Click Me</button>
+
     <script>
-        function completeTask(index) {
-            const alias = document.getElementById('alias' + index).value;
-            const course = document.getElementById('course' + index).value;
-            const details = document.getElementById('details' + index).value;
-
-            const data = {
-                row: index + 1, // Assuming first row is header
-                alias: alias,
-                course: course,
-                details: details,
-                sheetId: "136GLheziPXhzeBm_7WGAcuk7oZfn5bTVDLSLiptX3Pk" // Replace with your actual Google Sheet ID
-            };
-
-            console.log('Sending data:', data); // Log data to console for debugging
-
-            fetch('https://script.google.com/macros/s/AKfycbzzp39FnCGcB4DYcZOxSVHR9AT0AUlxaC_8QM7w18verHfIv0kfrdrZU57wxioLRti5/exec', { // Replace with your actual Apps Script URL
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(data)
-            })
-            .then(response => response.text())
-            .then(responseText => {
-                console.log(responseText);
-                if (responseText === 'Success') {
-                    document.querySelectorAll('.sticker')[index - 1].style.display = 'block';
-                } else {
-                    alert('Failed to update Google Sheet');
-                }
-            })
-            .catch(error => {
-                console.error('Error:', error);
-            });
-        }
+        document.getElementById('testButton').addEventListener('click', function() {
+            alert('Button clicked!');
+        });
     </script>
 </body>
 </html>
