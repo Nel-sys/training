@@ -89,90 +89,28 @@
     </table>
 
     <script>
-    const SHEET_URL = "https://script.google.com/macros/s/AKfycbxeTIkZbdvR2UJDxBuClUmQnegWRrWaHTS0gaMc67NvbfgTxTJUQfjxzf0DoTBe2l4h/exec"; // Replace with your Google Apps Script Web App URL
+const data = {
+    row: 1,
+    col: 2,
+    value: "Your Value",
+    sheetId: "**136GLheziPXhzeBm_7WGAcuk7oZfn5bTVDLSLiptX3Pk**" // Replace with your actual Google Sheet ID
+};
 
-    document.addEventListener('DOMContentLoaded', function () {
-        loadSavedValues();
+fetch('**https://script.google.com/macros/s/AKfycbzwjmX3MYh5dnoUzJiTLCRlV2-rAi8-HOqvMSmdy3KRaqY3EaEKYajMOtOKBx9NIR2y/exec**', { // Replace with your actual Apps Script URL
+    method: 'POST',
+    headers: {
+        'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(data)
+})
+.then(response => response.text())
+.then(responseText => {
+    console.log(responseText);
+})
+.catch(error => {
+    console.error('Error:', error);
+});
 
-        // Save input values to Google Sheets when they change
-        document.querySelectorAll('input[type="text"]').forEach(input => {
-            input.addEventListener('input', function () {
-                const row = parseInt(this.closest('tr').getAttribute('data-index')) + 1;
-                const col = getColumnIndex(this.id);
-                const value = this.value;
-
-                // Save to Google Sheets
-                updateSheet(row, col, value);
-            });
-        });
-    });
-
-    function loadSavedValues() {
-        fetch(SHEET_URL)
-            .then(response => response.json())
-            .then(data => {
-                data.forEach((row, index) => {
-                    if (index === 0) return; // Skip headers
-
-                    // Set values for inputs based on row data
-                    document.getElementById(`alias${index}`).value = row[0];
-                    document.getElementById(`course${index}`).value = row[1];
-                    document.getElementById(`details${index}`).value = row[2];
-
-                    // Set completion status
-                    if (row[3] === "true") {
-                        const button = document.querySelector(`tr[data-index="${index - 1}"] button`);
-                        const sticker = document.querySelector(`tr[data-index="${index - 1}"] .sticker`);
-                        button.disabled = true;
-                        sticker.style.display = 'block';
-                    }
-                });
-            }).catch(err => {
-                console.error("Error loading data: ", err);
-            });
-    }
-
-    function getColumnIndex(id) {
-        if (id.includes('alias')) return 1;
-        if (id.includes('course')) return 2;
-        if (id.includes('details')) return 3;
-        return 0;
-    }
-
-    function updateSheet(row, col, value) {
-        const postData = {
-            row: row,
-            col: col,
-            value: value
-        };
-
-        fetch(SHEET_URL, {
-            method: 'POST',
-            body: JSON.stringify(postData),
-            headers: {
-                'Content-Type': 'application/json'
-            }
-        }).then(response => response.text()).then(data => {
-            console.log("Update Success: ", data);
-        }).catch(err => {
-            console.error("Error updating sheet: ", err);
-            alert("Failed to save data. Please check your internet connection.");
-        });
-    }
-
-    function completeTask(button, index) {
-        let row = parseInt(index) + 1;
-        let sticker = button.parentElement.parentElement.querySelector('.sticker');
-
-        if (!button.disabled) {
-            // Mark the task as complete
-            button.disabled = true;
-            sticker.style.display = 'block';
-
-            // Save completion status to Google Sheets
-            updateSheet(row, 4, 'true'); // Column 4 is 'Complete' status
-        }
-    }
     </script>
 
 </body>
