@@ -17,10 +17,15 @@
         p {
             text-align: center;
         }
-        .form-container {
-            width: 100%;
-            max-width: 800px;
-            margin: 20px auto;
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+        }
+        .form-container, .response-container {
+            width: 45%;
+            min-width: 300px;
+            margin: 20px;
             padding: 10px;
             border: 1px solid #ddd;
             border-radius: 5px;
@@ -31,6 +36,11 @@
             height: 500px; /* Adjust height as needed */
             border: none;
         }
+        @media screen and (max-width: 800px) {
+            .form-container, .response-container {
+                width: 100%; /* Full width on smaller screens */
+            }
+        }
     </style>
 </head>
 <body>
@@ -40,9 +50,18 @@
     <a href="trailmixes.html" style="display: block; text-align: center; margin-top: 20px; color: #ff8000; text-decoration: none; font-weight: bold;">Go to Training Resources</a>
     <a href="progress.html" style="display: block; text-align: center; margin-top: 20px; color: #ff8000; text-decoration: none; font-weight: bold;">Go to Our Progress</a>
 
-    <div class="form-container">
+    <div class="container">
+        <!-- Embed Google Form -->
+        <div class="form-container">
+            <h2 style="text-align: center;">Submit Your Progress</h2>
+            <iframe src="https://docs.google.com/forms/d/e/1FAIpQLScXvpvOa83PCRDnajefLJfiqrui-6Ck8J51wwcSDZhOBrOR2Q/viewform?usp=sf_link" frameborder="0"></iframe>
+        </div>
+
         <!-- Embed Published Google Sheet -->
-        <iframe src="https://docs.google.com/spreadsheets/d/e/2PACX-1vSM2l2PR9zIP9xx3AMDScGbPiv1nf3haF5hVprPXNMDQwsnfymRLc-1kX5czOdQTN_AlZvGHSMsVBFV/pubhtml"></iframe>
+        <div class="response-container">
+            <h2 style="text-align: center;">Team Progress</h2>
+            <iframe src="https://docs.google.com/spreadsheets/d/e/2PACX-1vSM2l2PR9zIP9xx3AMDScGbPiv1nf3haF5hVprPXNMDQwsnfymRLc-1kX5czOdQTN_AlZvGHSMsVBFV/pubhtml"></iframe>
+        </div>
     </div>
 
 </body>
